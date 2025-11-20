@@ -1,60 +1,57 @@
 
 
-# **Advanced Express.js User API (TypeScript)**
-
-### High-Performance Caching • Intelligent Rate Limiting • Async Processing • Frontend Tester
+Advanced Express.js User API (TypeScript)
+High-Performance Caching • Intelligent Rate Limiting • Async Processing • Frontend Tester
 
 This project is a **high-performance backend system** built with **Express.js + TypeScript**, designed to handle heavy traffic efficiently through:
 
-* **LRU caching**
-* **Concurrent request coalescing**
-* **Background stale cleanup**
-* **Custom rate limiting (with burst handling)**
-* **Asynchronous queue for non-blocking DB simulation**
-* **Simple HTML frontend to test all endpoints**
+* LRU caching**
+* Concurrent request coalescing**
+* Background stale cleanup**
+* Custom rate limiting (with burst handling)**
+* Asynchronous queue for non-blocking DB simulation**
+* Simple HTML frontend to test all endpoints**
 
 This architecture models **real-world scalable systems**, similar to what companies like Netflix, Meta, and Amazon use in microservices.
 
 
 
-# 🌟 **Why This System Matters (Benefits)**
+ Why This System Matters (Benefits)
 
 This backend demonstrates **exactly the kind of optimizations used in high-traffic production environments.**
 Here’s how each part benefits performance and reliability:
 
 
 
-## 🧠 **1. LRU Cache (with TTL) — Massive Performance Boost**
+ LRU Cache (with TTL) — Massive Performance Boost
 
-**Benefit:** Faster responses, reduced server load, reduced database load.
+Benefit: Faster responses, reduced server load, reduced database load.
 
 * Stores frequently accessed user data.
 * Returns cached responses instantly (0–2 ms).
 * Automatically expires entries after **60 seconds**.
 * Removes least recently used entries when full (LRU eviction).
 
-👉 **Real-world impact:**
+Real-world impact:
 Twitter, Instagram, and YouTube use LRU caches to handle billions of reads per day while reducing database pressure by 90%.
 
----
 
-## 🚥 **2. Advanced Rate Limiting — Protects the Server**
 
-**Benefit:** Prevents spam, abuse, DDoS-like traffic, or accidental overload.
+2. Advanced Rate Limiting — Protects the Server**
+
+Benefit: Prevents spam, abuse, DDoS-like traffic, or accidental overload.
 
 This system uses **dual token buckets**:
 
-* **10 requests per minute**
-* **Burst capacity: 5 requests per 10 seconds**
-
-👉 **Real-world impact:**
+* 10 requests per minute**
+* Burst capacity: 5 requests per 10 seconds**
+Real-world impact:**
 Rate limiting is critical for protecting APIs against abuse, especially public-facing ones.
 
----
 
-## 🔄 **3. Concurrent Request Coalescing — Elegant Load Reduction**
+3. Concurrent Request Coalescing — Elegant Load Reduction**
 
-**Benefit:** Prevents duplicated work under heavy load.
+Benefit: Prevents duplicated work under heavy load.
 
 If multiple users request the same user ID at the same time:
 
@@ -62,34 +59,34 @@ If multiple users request the same user ID at the same time:
 * All others **wait for the same promise**
 * They return `"source": "coalesced"`
 
-👉 **Real-world impact:**
+Real-world impact:
 This is how CDNs (Cloudflare, Akamai) avoid “thundering herd” problems.
 
----
 
-## 🧵 **4. Asynchronous Processing with Queue — No Blocking**
 
-**Benefit:** Handles high concurrency without slowing down.
+4. Asynchronous Processing with Queue — No Blocking**
+
+Benefit: Handles high concurrency without slowing down.
 
 The async queue simulates database operations (200ms delay) using controlled concurrency (5 at a time).
 
-👉 **Real-world impact:**
+Real-world impact:**
 This models job queues used in microservices (BullMQ, RabbitMQ, SQS).
 
----
 
-## 🧹 **5. Stale Entry Cleanup (Background Worker)**
+
+
+5. Stale Entry Cleanup (Background Worker)**
 
 **Benefit:** Prevents memory leaks by removing expired cache entries every 10 seconds.
 
-👉 **Real-world impact:**
+Real-world impact:**
 Long-running servers in production MUST clean stale memory to avoid crashes.
 
----
 
-## 🖥 **6. Simple HTML Frontend — Makes Testing Easy**
+6. Simple HTML Frontend — Makes Testing Easy**
 
-**Benefit:** Users can test all API endpoints visually, no Postman needed.
+Benefit: Users can test all API endpoints visually, no Postman needed.
 
 Buttons provided for:
 
@@ -101,11 +98,11 @@ Buttons provided for:
 
 Shows full JSON response in a clean UI.
 
-👉 Perfect for testing & demonstrating system behavior.
+ Perfect for testing & demonstrating system behavior.
 
----
 
-# 🏗 **Project Architecture**
+
+Project Architecture
 
 ```
 express-user-api/
@@ -125,7 +122,7 @@ express-user-api/
 
 ---
 
-# 🔧 **Installation**
+Installation
 
 ### 1. Install dependencies
 
@@ -152,9 +149,9 @@ Server runs on:
 http://localhost:3000
 ```
 
----
 
-# 🧪 **Testing the API**
+
+Testing the API
 
 You can use **Postman**, **Thunder Client**, or the included **index.html** file.
 
@@ -180,7 +177,7 @@ All response bodies are shown in a live JSON box.
 
 # ⚡ **Endpoints Overview**
 
-### **GET /users/:id**
+GET /users/:id
 
 * Returns user from:
 
@@ -192,19 +189,19 @@ All response bodies are shown in a live JSON box.
 
 ---
 
-### **POST /users**
+POST /users**
 
 Creates a new user and caches it immediately.
 
 ---
 
-### **DELETE /cache**
+DELETE /cache**
 
 Clears all cached entries + resets stats.
 
 ---
 
-### **GET /cache-status**
+GET /cache-status**
 
 Shows:
 
@@ -219,13 +216,13 @@ Shows:
 
 ---
 
-### **GET /health**
+GET /health**
 
 Simple health check.
 
 ---
 
-# 🎯 **Why This Project is Valuable to Learn / Submit**
+Why This Project is Valuable to Learn / Submit**
 
 This backend demonstrates **professional-level engineering concepts** such as:
 
