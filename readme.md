@@ -220,9 +220,7 @@ GET /health**
 
 Simple health check.
 
----
 
-Why This Project is Valuable to Learn / Submit**
 
 This backend demonstrates **professional-level engineering concepts** such as:
 
