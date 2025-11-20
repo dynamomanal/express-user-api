@@ -175,7 +175,7 @@ All response bodies are shown in a live JSON box.
 
 ---
 
-# ⚡ **Endpoints Overview**
+**Endpoints Overview**
 
 GET /users/:id
 
