@@ -5,12 +5,12 @@ High-Performance Caching • Intelligent Rate Limiting • Async Processing • 
 
 This project is a **high-performance backend system** built with **Express.js + TypeScript**, designed to handle heavy traffic efficiently through:
 
-* LRU caching**
-* Concurrent request coalescing**
-* Background stale cleanup**
-* Custom rate limiting (with burst handling)**
-* Asynchronous queue for non-blocking DB simulation**
-* Simple HTML frontend to test all endpoints**
+* LRU caching
+* Concurrent request coalescing
+* Background stale cleanup
+* Custom rate limiting (with burst handling)
+* Asynchronous queue for non-blocking DB simulation
+* Simple HTML frontend to test all endpoints
 
 This architecture models **real-world scalable systems**, similar to what companies like Netflix, Meta, and Amazon use in microservices.
 
