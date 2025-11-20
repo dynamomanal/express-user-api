@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Express User API Tester</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f4f4f4;
+  }
+  h2 { margin-top: 40px; }
+  button {
+    padding: 8px 15px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  button:hover { background: #444; }
+  input, textarea {
+    width: 300px;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  .card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #aaa;
+  }
+  #responseBox {
+    white-space: pre-wrap;
+    background: #111;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    min-height: 150px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🔥 Express User API Tester</h1>
+<p>Use this page to test all backend endpoints.</p>
+
+<!-- -------------------------
+     GET /users/:id
+--------------------------- -->
+<div class="card">
+  <h2>GET /users/:id</h2>
+  <label>User ID:</label><br/>
+  <input id="getUserId" placeholder="Enter user id (e.g. 1)" /><br/>
+  <button onclick="getUser()">Fetch User</button>
+</div>
+
+<!-- -------------------------
+     POST /users
+--------------------------- -->
+<div class="card">
+  <h2>POST /users</h2>
+  <label>Name:</label><br/>
+  <input id="name" placeholder="Enter name" /><br/>
+  <label>Email:</label><br/>
+  <input id="email" placeholder="Enter email" /><br/>
+  <button onclick="createUser()">Create User</button>
+</div>
+
+<!-- -------------------------
+     DELETE /cache
+--------------------------- -->
+<div class="card">
+  <h2>DELETE /cache</h2>
+  <button onclick="clearCache()">Clear Cache</button>
+</div>
+
+<!-- -------------------------
+     GET /cache-status
+--------------------------- -->
+<div class="card">
+  <h2>GET /cache-status</h2>
+  <button onclick="cacheStatus()">Check Cache Status</button>
+</div>
+
+<!-- -------------------------
+     GET /health
+--------------------------- -->
+<div class="card">
+  <h2>GET /health</h2>
+  <button onclick="healthCheck()">Check Health</button>
+</div>
+
+<!-- -------------------------
+     RESPONSE BOX
+--------------------------- -->
+<h2>Response Output</h2>
+<div id="responseBox">Response will appear here...</div>
+
+<script>
+const BASE_URL = "http://localhost:3000";
+
+// Helper: show JSON output
+function showResponse(data) {
+  document.getElementById("responseBox").textContent =
+    JSON.stringify(data, null, 2);
+}
+
+// GET user
+async function getUser() {
+  const id = document.getElementById("getUserId").value;
+  const res = await fetch(`${BASE_URL}/users/${id}`);
+  const data = await res.json();
+  showResponse(data);
+}
+
+// POST create user
+async function createUser() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  const res = await fetch(`${BASE_URL}/users`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email })
+  });
+
+  const data = await res.json();
+  showResponse(data);
+}
+
+// DELETE cache
+async function clearCache() {
+  const res = await fetch(`${BASE_URL}/cache`, { method: "DELETE" });
+  const data = await res.json();
+  showResponse(data);
+}
+
+// GET cache-status
+async function cacheStatus() {
+  const res = await fetch(`${BASE_URL}/cache-status`);
+  const data = await res.json();
+  showResponse(data);
+}
+
+// GET health
+async function healthCheck() {
+  const res = await fetch(`${BASE_URL}/health`);
+  const data = await res.json();
+  showResponse(data);
+}
+</script>
+
+</body>
+</html>
